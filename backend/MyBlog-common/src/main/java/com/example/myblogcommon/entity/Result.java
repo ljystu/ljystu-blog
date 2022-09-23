@@ -8,8 +8,11 @@ import java.util.HashMap;
 /**
  * @Author: ljystu
  * @Date: 23/09/2022-15:12
+<<<<<<< HEAD
  *
  *
+=======
+>>>>>>> 8cc7bc6 (built)
  */
 public class Result extends HashMap<String, Object> {
 
