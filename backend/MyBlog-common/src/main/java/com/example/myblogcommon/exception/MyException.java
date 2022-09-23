@@ -22,7 +22,6 @@ public class MyException extends RuntimeException {
         this.msg = ErrorEnum.UNKNOWN.getMsg();
     }
 
-
     public MyException(ErrorEnum eEnum, Throwable e) {
         super(eEnum.getMsg(), e);
         this.msg = eEnum.getMsg();

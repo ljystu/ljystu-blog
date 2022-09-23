@@ -8,7 +8,6 @@ import java.util.HashMap;
 /**
  * @Author: ljystu
  * @Date: 23/09/2022-15:12
-
  */
 public class Result extends HashMap<String, Object> {
 
