@@ -12,15 +12,15 @@ import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.myblogcommon.dbblog.entity.Article;
-import com.example.myblogcommon.dbblog.service.ArticleService;
+import com.example.myblogcommon.dbblog.entity.LogView;
+import com.example.myblogcommon.dbblog.service.LogViewService;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.myblogcommon.base.AbstractController;
 
 /**
  * <p>
- * Articles
+ * 阅读日志 前端控制器
  * </p>
  *
  * @author ljystu
@@ -28,64 +28,65 @@ import com.example.myblogcommon.base.AbstractController;
  */
 @RestController
 @Slf4j
-@RequestMapping("/admin/dbblog/article")
-public class ArticleController extends AbstractController {
+@RequestMapping("/admin/dbblog/view")
+public class LogViewController extends AbstractController {
     @Autowired
-    private ArticleService articleService;
+    private LogViewService viewService;
 
     /**
-     * list
+     * 列表
      */
     @GetMapping("/list")
-    @RequiresPermissions("dbblog:article:list")
-    public Result list(@RequestParam Map<String, Object> params) {
-        PageUtils page = articleService.queryPage(params);
+    @RequiresPermissions("dbblog:view:list")
+    public Result list(@RequestParam Map
+            <String, Object> params) {
+        PageUtils page = viewService.queryPage(params);
 
         return Result.ok().put("page", page);
     }
 
 
     /**
-     * info
+     * 信息
      */
     @GetMapping("/info/{id}")
-    @RequiresPermissions("dbblog:article:info")
+    @RequiresPermissions("dbblog:view:info")
     public Result info(@PathVariable("id") String id) {
-        Article article = articleService.getById(id);
+        LogView view = viewService.getById(id);
 
-        return Result.ok().put("article", article);
+        return Result.ok().put("view", view);
     }
 
     /**
-     * save
+     * 保存
      */
     @PostMapping("/save")
-    @RequiresPermissions("dbblog:article:save")
-    public Result save(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.save(article);
+    @RequiresPermissions("dbblog:view:save")
+    public Result save(@RequestBody LogView view) {
+        ValidatorUtils.validateEntity(view);
+        viewService.save(view);
 
         return Result.ok();
     }
 
     /**
-     * update
+     * 修改
      */
     @PutMapping("/update")
-    @RequiresPermissions("dbblog:article:update")
-    public Result update(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.updateById(article);
+    @RequiresPermissions("dbblog:view:update")
+    public Result update(@RequestBody LogView view) {
+        ValidatorUtils.validateEntity(view);
+        viewService.updateById(view);
         return Result.ok();
     }
 
     /**
-     * delete
+     * 删除
      */
     @DeleteMapping("/delete")
-    @RequiresPermissions("dbblog:article:delete")
+    @RequiresPermissions("dbblog:view:delete")
     public Result delete(@RequestBody String[] ids) {
-        articleService.removeByIds(Arrays.asList(ids));
+        viewService.removeByIds(Arrays.asList(ids));
 
         return Result.ok();
     }

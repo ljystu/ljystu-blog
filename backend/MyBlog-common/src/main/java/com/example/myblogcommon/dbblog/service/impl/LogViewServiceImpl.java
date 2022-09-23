@@ -1,8 +1,8 @@
 package com.example.myblogcommon.dbblog.service.impl;
 
-import com.example.myblogcommon.dbblog.entity.Article;
-import com.example.myblogcommon.dbblog.mapper.ArticleMapper;
-import com.example.myblogcommon.dbblog.service.ArticleService;
+import com.example.myblogcommon.dbblog.entity.LogView;
+import com.example.myblogcommon.dbblog.mapper.LogViewMapper;
+import com.example.myblogcommon.dbblog.service.LogViewService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * <p>
- * 文章 服务实现类
+ * 阅读日志 服务实现类
  * </p>
  *
  * @author ljystu
@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
+public class LogViewServiceImpl extends ServiceImpl<LogViewMapper, LogView> implements LogViewService {
 
     /**
      * 分页查询
@@ -33,9 +33,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * @return
      */
     @Override
-    public PageUtils queryPage(Map<String, Object> params) {
-        IPage<Article> page = baseMapper.selectPage(new Query<Article>(params).getPage(),
-                new QueryWrapper<Article>().lambda());
+    public PageUtils queryPage(Map
+                                       <String, Object> params) {
+        IPage<LogView> page = baseMapper.selectPage(new Query<LogView>(params).getPage(),
+                new QueryWrapper<LogView>().lambda());
         return new PageUtils(page);
     }
 

@@ -12,15 +12,15 @@ import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.myblogcommon.dbblog.entity.Article;
-import com.example.myblogcommon.dbblog.service.ArticleService;
+import com.example.myblogcommon.dbblog.entity.BookSense;
+import com.example.myblogcommon.dbblog.service.BookSenseService;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.myblogcommon.base.AbstractController;
 
 /**
  * <p>
- * Articles
+ * 读后感 前端控制器
  * </p>
  *
  * @author ljystu
@@ -28,64 +28,65 @@ import com.example.myblogcommon.base.AbstractController;
  */
 @RestController
 @Slf4j
-@RequestMapping("/admin/dbblog/article")
-public class ArticleController extends AbstractController {
+@RequestMapping("/admin/dbblog/sense")
+public class BookSenseController extends AbstractController {
     @Autowired
-    private ArticleService articleService;
+    private BookSenseService senseService;
 
     /**
-     * list
+     * 列表
      */
     @GetMapping("/list")
-    @RequiresPermissions("dbblog:article:list")
-    public Result list(@RequestParam Map<String, Object> params) {
-        PageUtils page = articleService.queryPage(params);
+    @RequiresPermissions("dbblog:sense:list")
+    public Result list(@RequestParam Map
+            <String, Object> params) {
+        PageUtils page = senseService.queryPage(params);
 
         return Result.ok().put("page", page);
     }
 
 
     /**
-     * info
+     * 信息
      */
     @GetMapping("/info/{id}")
-    @RequiresPermissions("dbblog:article:info")
+    @RequiresPermissions("dbblog:sense:info")
     public Result info(@PathVariable("id") String id) {
-        Article article = articleService.getById(id);
+        BookSense sense = senseService.getById(id);
 
-        return Result.ok().put("article", article);
+        return Result.ok().put("sense", sense);
     }
 
     /**
-     * save
+     * 保存
      */
     @PostMapping("/save")
-    @RequiresPermissions("dbblog:article:save")
-    public Result save(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.save(article);
+    @RequiresPermissions("dbblog:sense:save")
+    public Result save(@RequestBody BookSense sense) {
+        ValidatorUtils.validateEntity(sense);
+        senseService.save(sense);
 
         return Result.ok();
     }
 
     /**
-     * update
+     * 修改
      */
     @PutMapping("/update")
-    @RequiresPermissions("dbblog:article:update")
-    public Result update(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.updateById(article);
+    @RequiresPermissions("dbblog:sense:update")
+    public Result update(@RequestBody BookSense sense) {
+        ValidatorUtils.validateEntity(sense);
+        senseService.updateById(sense);
         return Result.ok();
     }
 
     /**
-     * delete
+     * 删除
      */
     @DeleteMapping("/delete")
-    @RequiresPermissions("dbblog:article:delete")
+    @RequiresPermissions("dbblog:sense:delete")
     public Result delete(@RequestBody String[] ids) {
-        articleService.removeByIds(Arrays.asList(ids));
+        senseService.removeByIds(Arrays.asList(ids));
 
         return Result.ok();
     }

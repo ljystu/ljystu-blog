@@ -12,15 +12,15 @@ import java.util.Map;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import com.example.myblogcommon.dbblog.entity.Article;
-import com.example.myblogcommon.dbblog.service.ArticleService;
+import com.example.myblogcommon.dbblog.entity.Link;
+import com.example.myblogcommon.dbblog.service.LinkService;
 
 import org.springframework.web.bind.annotation.RestController;
 import com.example.myblogcommon.base.AbstractController;
 
 /**
  * <p>
- * Articles
+ * 友链 前端控制器
  * </p>
  *
  * @author ljystu
@@ -28,64 +28,65 @@ import com.example.myblogcommon.base.AbstractController;
  */
 @RestController
 @Slf4j
-@RequestMapping("/admin/dbblog/article")
-public class ArticleController extends AbstractController {
+@RequestMapping("/admin/dbblog/link")
+public class LinkController extends AbstractController {
     @Autowired
-    private ArticleService articleService;
+    private LinkService linkService;
 
     /**
-     * list
+     * 列表
      */
     @GetMapping("/list")
-    @RequiresPermissions("dbblog:article:list")
-    public Result list(@RequestParam Map<String, Object> params) {
-        PageUtils page = articleService.queryPage(params);
+    @RequiresPermissions("dbblog:link:list")
+    public Result list(@RequestParam Map
+            <String, Object> params) {
+        PageUtils page = linkService.queryPage(params);
 
         return Result.ok().put("page", page);
     }
 
 
     /**
-     * info
+     * 信息
      */
     @GetMapping("/info/{id}")
-    @RequiresPermissions("dbblog:article:info")
+    @RequiresPermissions("dbblog:link:info")
     public Result info(@PathVariable("id") String id) {
-        Article article = articleService.getById(id);
+        Link link = linkService.getById(id);
 
-        return Result.ok().put("article", article);
+        return Result.ok().put("link", link);
     }
 
     /**
-     * save
+     * 保存
      */
     @PostMapping("/save")
-    @RequiresPermissions("dbblog:article:save")
-    public Result save(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.save(article);
+    @RequiresPermissions("dbblog:link:save")
+    public Result save(@RequestBody Link link) {
+        ValidatorUtils.validateEntity(link);
+        linkService.save(link);
 
         return Result.ok();
     }
 
     /**
-     * update
+     * 修改
      */
     @PutMapping("/update")
-    @RequiresPermissions("dbblog:article:update")
-    public Result update(@RequestBody Article article) {
-        ValidatorUtils.validateEntity(article);
-        articleService.updateById(article);
+    @RequiresPermissions("dbblog:link:update")
+    public Result update(@RequestBody Link link) {
+        ValidatorUtils.validateEntity(link);
+        linkService.updateById(link);
         return Result.ok();
     }
 
     /**
-     * delete
+     * 删除
      */
     @DeleteMapping("/delete")
-    @RequiresPermissions("dbblog:article:delete")
+    @RequiresPermissions("dbblog:link:delete")
     public Result delete(@RequestBody String[] ids) {
-        articleService.removeByIds(Arrays.asList(ids));
+        linkService.removeByIds(Arrays.asList(ids));
 
         return Result.ok();
     }

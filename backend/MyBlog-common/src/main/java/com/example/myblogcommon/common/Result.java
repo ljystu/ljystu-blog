@@ -1,4 +1,4 @@
-package com.example.myblogcommon.entity;
+package com.example.myblogcommon.common;
 
 
 import com.example.myblogcommon.enums.ErrorEnum;

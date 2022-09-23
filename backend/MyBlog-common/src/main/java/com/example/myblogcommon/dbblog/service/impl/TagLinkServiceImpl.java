@@ -1,8 +1,8 @@
 package com.example.myblogcommon.dbblog.service.impl;
 
-import com.example.myblogcommon.dbblog.entity.Article;
-import com.example.myblogcommon.dbblog.mapper.ArticleMapper;
-import com.example.myblogcommon.dbblog.service.ArticleService;
+import com.example.myblogcommon.dbblog.entity.TagLink;
+import com.example.myblogcommon.dbblog.mapper.TagLinkMapper;
+import com.example.myblogcommon.dbblog.service.TagLinkService;
 import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.core.metadata.IPage;
@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * <p>
- * 文章 服务实现类
+ * 标签多对多维护表 服务实现类
  * </p>
  *
  * @author ljystu
@@ -24,7 +24,7 @@ import java.util.Map;
  */
 @Service
 @Slf4j
-public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> implements ArticleService {
+public class TagLinkServiceImpl extends ServiceImpl<TagLinkMapper, TagLink> implements TagLinkService {
 
     /**
      * 分页查询
@@ -34,9 +34,10 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      */
     @Override
     public PageUtils queryPage(Map<String, Object> params) {
-        IPage<Article> page = baseMapper.selectPage(new Query<Article>(params).getPage(),
-                new QueryWrapper<Article>().lambda());
+        IPage<TagLink> page = baseMapper.selectPage(new Query<TagLink>(params).getPage(),
+                new QueryWrapper<TagLink>().lambda());
         return new PageUtils(page);
     }
+
 
 }

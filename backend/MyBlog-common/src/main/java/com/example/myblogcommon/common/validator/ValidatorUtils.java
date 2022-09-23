@@ -1,4 +1,4 @@
-package com.example.myblogcommon.util;
+package com.example.myblogcommon.common.validator;
 
 
 import com.example.myblogcommon.exception.MyException;
