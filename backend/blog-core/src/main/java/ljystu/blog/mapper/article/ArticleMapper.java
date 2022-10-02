@@ -10,14 +10,12 @@ import org.apache.ibatis.annotations.Param;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * <p>
- * 文章 Mapper 接口
- * </p>
- *
- * @author bobbi
- * @since 2018-11-07
+ * @Author: ljystu
+ * @Date: 01/10/2022-15:11
  */
+
 @Mapper
 public interface ArticleMapper extends BaseMapper<Article> {
 
@@ -29,7 +27,7 @@ public interface ArticleMapper extends BaseMapper<Article> {
      * @param params
      * @return
      */
-    List<ArticleDTO> listArticleVo(Page<ArticleDTO> page, @Param("params") Map<String, Object> params);
+    List<ArticleDTO> listArticleDTO(Page<ArticleDTO> page, @Param("params") Map<String, Object> params);
 
     /**
      * 根据条件查询分页

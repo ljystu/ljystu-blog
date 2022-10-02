@@ -7,14 +7,12 @@ import org.apache.ibatis.annotations.Mapper;
 import java.util.List;
 import java.util.Map;
 
+
 /**
- * <p>
- * Mapper 接口
- * </p>
- *
- * @author bobbi
- * @since 2018-12-17
+ * @Author: ljystu
+ * @Date: 02/10/2022-15:50
  */
+
 @Mapper
 public interface CategoryMapper extends BaseMapper<Category> {
 

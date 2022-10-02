@@ -22,9 +22,10 @@
         <result column="top" property="top"/>
     </resultMap>
 
-    <resultMap id="WithTagList" type="ljystu.blog.entity.article.vo.ArticleVO" extends="BaseResultMap">
+    <resultMap id="WithTagList" type="ljystu.blog.entity.article.dto.ArticleDTO" extends="BaseResultMap">
         <association property="tagList" column="{linkId=id, type=type}"
                      select="ljystu.blog.mapper.operation.TagMapper.listByLinkId"/>
+        <association property="categoryListStr"/>
     </resultMap>
 
     <sql id="homeArticleColumn">
@@ -37,7 +38,7 @@
         ,title,description,author,read_num,like_num,cover,cover_type,create_time,top,publish,recommend,category_id
     </sql>
 
-    <select id="listArticleVo" resultType="ljystu.blog.entity.article.dto.ArticleDTO">
+    <select id="listArticleDTO" resultType="ljystu.blog.entity.article.dto.ArticleDTO">
         select
         <include refid="manageArticleColumn"/>
         from article

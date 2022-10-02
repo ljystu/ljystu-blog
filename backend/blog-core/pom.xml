@@ -105,5 +105,19 @@
             <artifactId>spring-boot-starter-amqp</artifactId>
         </dependency>
     </dependencies>
+    <build>
+        <finalName>blog</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <configuration><!-- 指定该Main Class为全局的唯一入口 -->
+                    <mainClass>ljystu.blog.MyBlogApplication</mainClass>
+                    <layout>ZIP</layout>
+                </configuration>
+            </plugin>
+
+        </plugins>
+    </build>
 
 </project>

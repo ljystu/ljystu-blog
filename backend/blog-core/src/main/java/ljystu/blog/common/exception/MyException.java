@@ -3,14 +3,14 @@ package ljystu.blog.common.exception;
 import ljystu.blog.common.exception.enums.ErrorEnum;
 import lombok.Data;
 
+
 /**
  * MyException
  *
- * @author bobbi
- * @date 2018/10/07 13:54
- * @email 571002217@qq.com
- * @description 自定义异常
+ * @Author: ljystu
+ * @Date: 25/09/2022-16:05
  */
+
 @Data
 public class MyException extends RuntimeException {
     private String msg;

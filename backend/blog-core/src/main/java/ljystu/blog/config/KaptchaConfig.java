@@ -7,14 +7,12 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.Properties;
 
+
 /**
- * KaptchaConfig
- *
- * @author bobbi
- * @date 2018/10/20 13:17
- * @email 571002217@qq.com
- * @description 验证码配置类
+ * @Author: ljystu
+ * @Date: 25/09/2022-17:21
  */
+
 @Configuration
 public class KaptchaConfig {
 

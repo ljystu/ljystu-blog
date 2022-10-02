@@ -3,11 +3,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <modules>
-        <module>MyBlog-common</module>
-        <!--            <module>dbblog-manage</module>-->
+        <!--        <module>MyBlog-common</module>-->
+        <module>blog-core</module>
+        <module>blog-manage</module>
         <!--            <module>dbblog-auth</module>-->
         <!--            <module>dbblog-portal</module>-->
-        <!--            <module>dbblog-search</module>-->
+        <module>dbblog-search</module>
 
     </modules>
     <parent>

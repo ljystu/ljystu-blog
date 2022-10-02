@@ -9,14 +9,14 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import org.springframework.web.servlet.NoHandlerFoundException;
 
+
 /**
- * MyExceptionHandler
+ * ExceptionHandler
  *
- * @author bobbi
- * @date 2018/10/07 14:33
- * @email 571002217@qq.com
- * @description 统一异常处理器
+ * @Author: ljystu
+ * @Date: 25/09/2022-16:06
  */
+
 @RestControllerAdvice
 @Slf4j
 public class MyExceptionHandler {
